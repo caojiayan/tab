@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.main {
+				width: 600px;
+				margin: 100px auto;
+			}
+			
+			.clearfix:after {
+				content: '';
+				display: table;
+				clear: both;
+			}
+			
+			.clearfix {
+				zoom: 1;
+			}
+			
+			ul {
+				list-style: none;
+			}
+			
+			li {
+				float: left;
+				width: 100px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+			}
+			li.active{
+				background: #ddd;
+			}
+			.main-content{
+				margin-top: 40px;
+			}
+			
+			.main-content .box {
+				width: 400px;
+				height: 400px;
+				margin: 0 auto;
+				border: 1px solid #ddd;
+				display: none;
+			}
+			.main-content .box.active{
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="main">
+			<ul class="clearfix list">
+				<li class="active">
+					<a href="javascript:;">菜单1</a>
+				</li>
+				<li>
+					<a href="javascript:;">菜单2</a>
+				</li>
+				<li>
+					<a href="javascript:;">菜单3</a>
+				</li>
+				<li>
+					<a href="javascript:;">菜单4</a>
+				</li>
+				<li>
+					<a href="javascript:;">菜单5</a>
+				</li>
+				<li>
+					<a href="javascript:;">菜单6</a>
+				</li>
+			</ul>
+
+			<div class="main-content">
+				<div class="box active">1</div>
+				<div class="box">2</div>
+				<div class="box">3</div>
+				<div class="box">4</div>
+				<div class="box">5</div>
+				<div class="box">6</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js" ></script>
+	<script>
+		$(function(){
+			$('.list li').on('click',function(){
+				$('.list li').removeClass('active');
+				$(this).addClass('active');
+				$('.main-content .box').removeClass('active');
+				$('.main-content .box').eq($(this).index()).addClass('active');
+			})
+		})
+	</script>
+</html>
